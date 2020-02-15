@@ -29,10 +29,6 @@ $container = new \Slim\Container;
 // create slim object
 $router = new \Slim\App($container);
 
-$dbHost = "127.0.0.1";
-$dbName= "pascal_backend";
-$dbUser = "root";
-$dbPass = "";
 $router->options('/{routes:.+}', function ($request, $response, $args) {
     return $response;
 });
@@ -46,6 +42,10 @@ $router->add(function ($req, $res, $next) {
 });
 
 
+$dbHost = "127.0.0.1";
+$dbName= "pascal_backend";
+$dbUser = "root";
+$dbPass = "";
 $connection = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8", $dbUser, $dbPass);
 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 $connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
